@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jokes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        font-family: Cursive;
+      }
+      h1 {
+        text-align: center;
+      }
+      /* Link styles */
+      a {
+        display: block;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+        font-size: 24px;
+        color: #fff;
+        background-color: #333333;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      a:hover {
+        background-color:#555555;
+      }
+      p {
+        margin: 20px 0;
+      }
+      #setup, #punchline {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        font-family: Cursive;
+      }
+      #setup {
+        color: #20b1f5;
+      }
+      #punchline {
+        color: #ff0000;
+      }
+      button {
+        display: block;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+        font-size: 24px;
+        color: #fff;
+        background-color: #333333;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background-color:#555555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Jokes</h1>
+    <p id="setup">Joke:-  {{setup}}</p>
+    <p id="punchline">PunchLine:-   {{punchline}}</p>
+    <button onclick="getNewJoke()">Get Another Joke</button>
+    <script>
+      function getNewJoke() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://v2.jokeapi.dev/joke/Any');
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var joke = JSON.parse(xhr.responseText);
+            if (joke.type === 'twopart') {
+              document.getElementById('setup').textContent = 'Joke:- ' + joke.setup;
+              document.getElementById('punchline').textContent = 'PunchLine:- ' + joke.delivery;
+            } else {
+              document.getElementById('setup').textContent = 'Joke:- ' + joke.joke;
+              document.getElementById('punchline').textContent = '';
+            }
+          }
+        };
+        xhr.send();
+      }
+    </script>
+    <p><a href="/">Back to home page</a></p>
+  </body>
+</html>

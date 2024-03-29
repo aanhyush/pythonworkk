@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Number Guessing Game</title>
+    <style>
+      body {
+        font-family: Cursive;
+        background-color: #f5f5f5;
+      }
+      
+      h1 {
+        text-align: center;
+        color: #333;
+        height: 8em;
+      }
+      
+      p {
+        font-size: 1.2em;
+        margin: 10px 0;
+        text-align: center;
+      }
+      
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+      }
+      
+      input[type="text"] {
+        font-size: 1.2em;
+        padding: 5px;
+        margin-right: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        width: 100px;
+      }
+      
+      button[type="submit"] {
+        font-size: 1.2em;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #555555;
+        color: #fff;
+        cursor: pointer;
+      }
+      
+      button[type="submit"]:hover {
+        background-color: #49b7b2;
+      }
+      
+      .result {
+        font-size: 1.5em;
+        margin-top: 20px;
+        text-align: center;
+        color: #333;
+      }
+      
+      .remaining-guesses {
+        text-align: center;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess the secret number between 1 and 100:</p>
+    <form action="/guess" method="POST">
+      <input type="text" name="guess" autofocus>
+      <button type="submit">Guess</button>
+    </form>
+    <p class="remaining-guesses">Remaining guesses: {{ max_guesses - game.num_guesses }}</p>
+    <p class="result">{{ game.result }}</p>
+  </body>
+</html>

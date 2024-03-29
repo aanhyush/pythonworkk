@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Jumble</title>
+    <style>
+     /* Body styles */
+     body {
+        font-family: Arial, sans-serif;
+        background-color:  #c5fbf1;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Header styles */
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px #71dcd6;
+      }
+
+      /* Link styles */
+      a {
+        display: block;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+        font-size: 24px;
+        color: #fff;
+        background-color: #333333;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      a:hover {
+        background-color:#555555;
+      }
+      /* Form styles */
+      form {
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f4f4f4;
+        margin-right: 10px;
+        width: 200px;
+        box-shadow: 2px 2px #000;
+      }
+
+      button[type="submit"] {
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #333333;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 2px 2px #000;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #555555;
+      }
+      p {
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1  style=" font-family: Cursive;">Sorry, that's not correct.</h1>
+    <p style=" font-family: Cursive;">Word: {{ scrambled }}</p>
+    <p style=" font-family: Cursive;">Hint: {{ hint }}</p>
+    <form method="POST" action="/game">
+      <input type="text" name="guess"  style=" font-family: Cursive;" autocomplete="off" required>
+      <button type="submit" style=" font-family: Cursive;">Guess again</button>
+    </form>
+    <p><a href="/">Back to main page </a></p>
+
+  </body>
+</html>

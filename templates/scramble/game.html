@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Jumble</title>
+    <style>
+      /* Body styles */
+      body {
+  font-family: Cursive;
+  background-color: #c5fbf1;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+
+}
+
+      /* Header styles */
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+       
+        
+      }
+
+      /* Link styles */
+      a {
+        display: block;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+        font-size: 24px;
+        color: #fff;
+        background-color: #333333;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      a:hover {
+        background-color:#555555;
+      }
+      /* Form styles */
+      form {
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f4f4f4;
+        margin-right: 10px;
+        width: 200px;
+        box-shadow: 2px 2px #000;
+      }
+
+      button[type="submit"] {
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #333333;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 2px 2px #000;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #555555;
+      }
+
+      /* Success message styles */
+      .success {
+        text-align: center;
+        font-size: 24px;
+        color: #4CAF50;
+        margin-top: 30px;
+      }
+
+      /* Error message styles */
+      .error {
+        text-align: center;
+        font-size: 24px;
+        color: #ff0000;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Unscramble the following word:</h1>
+    <p style="font-size: 36px; text-align: center; ">Word : {{ scrambled }}</p>
+    <p style="text-align: center; margin-top: 10px; font-size: 24px;">Hint: {{ hint }}</p>
+    <form method="POST" action="/game">
+      <input type="text" autocomplete="off" name="guess" style=" font-family: Cursive;" required>
+      <button type="submit" style=" font-family: Cursive;">Guess</button>
+    </form>
+    {% if success %}
+      <p class="success">{{ success }}</p>
+    {% endif %}
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <p><a href="/">Back to home page</a></p>
+
+  </body>
+</html>

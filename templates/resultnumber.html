@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+  background-color: #f2f2f2;
+  font-family: Cursive;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  height: 8em;
+}
+
+p {
+  color: #666;
+  font-size: 1.2em;
+  margin: 10px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+a {
+        display: block;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+        font-size: 24px;
+        color: #fff;
+        background-color: #333333;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      a:hover {
+        background-color:#555555;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Number Guessing Game</h1>
+    <p>{{ result }}</p>
+    <p>Maximum guesses allowed: {{ max_guesses }}</p>
+    <p>Remaining guesses: {{ remaining_guesses }}</p>
+    <form action="/number" method="GET">
+      <button type="submit">Play again</button>
+      <p><a href="/">Back to home page</a></p>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+	<title>Guess the Movie Title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #F4F4F4;
+	  }
+	  
+	  h1 {
+		text-align: center;
+	  }
+	  
+	  form {
+		text-align: center;
+		margin: 20px auto;
+	  }
+	  
+	  input[type="submit"] {
+		background-color: #4CAF50;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 3px;
+		cursor: pointer;
+		margin-top: 10px;
+	  }
+	  button[type="button"] {
+		background-color: #4CAF50;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 3px;
+		cursor: pointer;
+		margin-top: 10px;
+	  }
+	  
+	  .btn-primary {
+		background-color: #007bff;
+		border-color: #007bff;
+		color: #fff;
+		padding: 10px 20px;
+		border-radius: 3px;
+		cursor: pointer;
+	  }
+	  
+	  .btn-primary:hover {
+		background-color: #0069d9;
+		border-color: #0062cc;
+		color: #fff;
+	  }
+	  
+	  .card {
+		max-width: 500px;
+		margin: 20px auto;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+	  }
+	  
+	  .card-body {
+		padding: 20px;
+	  }
+	  
+	  .card-title {
+		margin-top: 0;
+	  }
+	  
+	  .emoji-text {
+		font-size: 2em;
+		text-align: center;
+		margin: 20px auto;
+	  }
+	  
+	  .error-message {
+		color: red;
+		text-align: center;
+		margin: 20px auto;
+	  }
+	  
+	  .success-message {
+		color: green;
+		text-align: center;
+		margin: 20px auto;
+	  }
+	  
+	  .bg-warning {
+		background-color: #f8d7da!important;
+		color: #721c24!important;
+		padding: 10px;
+		border-radius: 3px;
+		margin-top: 20px;
+	  }
+	  </style>
+</head>
+<body>
+	<h1 style=" font-family: Cursive;">Guess the Movie Title</h1>
+	
+	{% if errors %}
+	<div class="error-message" style=" font-family: Cursive;">{{ errors }}</div>
+	<form method="post" action="/">
+        <input type="submit" class="btn btn-primary" name="new_game" style=" font-family: Cursive;" value="Play Again">
+      </form>
+	{% endif %}
+	{% if success %}
+	<div class="success-message" style=" font-family: Cursive;">Congratulations! You guessed the movie title! </div>
+	<div class="success-message" style=" font-family: Cursive;">
+		The movie title was &#8594 {{ movie_title.capitalize().replace('_', ' ') }} &#8592
+	</div>	
+	<form method="post" action="/">
+        <input type="submit" class="btn btn-primary" style=" font-family: Cursive;" name="new_game" value="Play Again">
+      </form>
+	{% endif %}
+	{% if movie_title and emoji_text %}
+	<div class="emoji-text" style=" font-family: Cursive;">{{ emoji_text }}</div>
+	<form method="POST" action="/">
+		<input type="text" name="guess" autocomplete="off" style=" font-family: Cursive;" placeholder="Enter movie title here">
+		<input type="submit" value="Guess" style=" font-family: Cursive;" class="btn btn-primary">
+		
+	</form>
+	{% endif %}
+
+	{% if not (give_up or success or ok) %}
+	<form method="POST" action="/">
+		
+		<button type="button" class="btn btn-primary" style=" font-family: Cursive;" id="demo" onclick='okay()'>Click here for hint</button>
+
+		<br>
+		<input type="submit" class="btn btn-primary" name="give_up" style=" font-family: Cursive;" value="Give Up">
+	</form>
+	{% endif %}
+	<script >
+		function okay() {
+		  var errorList = "{{ error }}".split(", ");
+		  var numberedError = "";
+		  for (var i = 0; i < errorList.length; i++) {
+			numberedError += (i+1) + ". " + errorList[i] + "<br>";
+		  }
+		  document.getElementById("demo").innerHTML = "Here are 10 movies to help you, only 1 movie is correct from this list:<br><br>" + numberedError;
+		}
+		</script>
+		
+
+
+	<!-- {% if not movie_title %}
+	<form method="POST" action="/">
+		<input type="submit" name="new_game" class="btn btn-primary" value="New Game">
+	</form>
+	{% endif %} -->
+	
+  {% if give_up %}
+  <div class="card bg-warning">
+    <div class="card-body">
+      <h2 class="card-title" style=" font-family: Cursive;">{{ message }}</h2>
+      <p class="card-text" style=" font-family: Cursive;">The movie title was '{{ movie_title.capitalize().replace('_', ' ') }}'.</p>
+      <form method="post" action="/">
+        <input type="submit" style=" font-family: Cursive;" class="btn btn-primary" name="new_game" value="Play Again">
+      </form>
+    </div>
+  </div>
+{% endif %}
+
+
+	
+</body>
+</html>

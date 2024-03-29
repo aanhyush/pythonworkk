@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Number Guessing Game</title>
+    <style>
+      body {
+        font-family: Cursive;
+        background-color: #f2f2f2;
+        
+      }
+      h1 {
+        color: #333333;
+        text-align: center;
+        height: 8em;
+      }
+      form {
+        margin: auto;
+        width: 30%;
+        border: 2px solid #333333;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #ffffff;
+        
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+      }
+      select {
+        font-size: 16px;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #cccccc;
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button[type=submit] {
+        background-color: #333333;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 3px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button[type=submit]:hover {
+        background-color: #555555;
+      }
+      a {
+        display: block;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+        font-size: 24px;
+        color: #fff;
+        background-color: #333333;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      a:hover {
+        background-color:#555555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Number Guessing Game</h1>
+    <form action="/play" method="POST">
+      <label for="difficulty">Choose difficulty level:</label>
+      <select id="difficulty" name="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button type="submit">Start game</button>
+      <p><a href="/">Back to home page</a></p>
+    </form>
+  </body>
+</html>
